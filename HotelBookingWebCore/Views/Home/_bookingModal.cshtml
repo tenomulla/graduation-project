@@ -1,0 +1,127 @@
+@model HotelBookingWebCore.Models.BookingDetailViewModel
+<div id="bookingModal" class="booking-details-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+
+        <div class="heading-buttons">
+            <span id="close" class="item1 close"><i class="far fa-arrow-alt-circle-left"></i></span>
+            <h2 class="item2">BOOKING DETAILS</h2>
+            <span id="closeIt" class="item3 close" onclick="CloseOpenedModal('bookingModal')"><i class="fas fa-times-circle"></i></span>
+        </div>
+
+        <div class="booking-details">
+            <div class="container">
+                <h3 id="room_show">@Model.Room</h3>
+                <div class="date" id="dateBooking_show">@Model.BookedDate.Value.ToString("dd/MM/yyyy")  | <span class="time" id="timeBooking_show">@Model.Time</span></div>
+            </div>
+            <p id="EnteredDate">Booked on : @Model.EnteredDate.Value.ToString("dd / MM / yyyy") | @Model.BookedDate.Value.ToString("hh:mm tt")</p>
+        </div>
+
+
+        <div style="justify-content: space-around;" class="flex modal-flex">
+            <div class="left-side">
+                <div class="input-control">
+                    <input type="hidden" id="BookingId" value="@Model.Id" />
+                    <input type="hidden" id="StatusValue" value="@Model.Status" />
+                    <label for="status">Change Status</label><br>
+                    <select onchange="status()" name="status" id="status_show">
+                        <option value="Select Status" disabled selected>Select Status</option>
+                        <option class="blue" value="Confirmed">Confirmed</option>
+                        <option class="red" value="UnConfirmed">UnConfirmed</option>
+                        <option class="green" value="Paid">Paid</option>
+                        <option class="grey" value="Canceled">Canceled</option>
+                    </select>
+                </div>
+
+                <div style="justify-content: space-around;" class="flex">
+                    <div class="input-control">
+                        <label for="name">Name</label><br>
+                        <input type="text" placeholder="Type Your Name" id="name_show" value="@Model.Name">
+                    </div>
+                    <div class="input-control ml-45">
+                        <label style="margin-left: 1rem;" for="Size">Size</label><br>
+                        <input class="input-small" type="text" placeholder="Size" id="size_show" value="@Model.Size">
+                    </div>
+                </div>
+
+
+                <div style="justify-content: space-around;" class="flex">
+                    <div class="input-control">
+                        <label for="phone">Phone#</label><br>
+                        <input name="phone" type="text" placeholder="Type Your Phone" id="phoneNo_show" value="@Model.PhonNo">
+                    </div>
+                    <div class="input-control ml-45">
+                        <label for="category">Category</label><br>
+                        <input name="category" class="input-small" type="text" placeholder="category" id="category_show" value="@Model.Category">
+                    </div>
+                </div>
+
+                <div class="flex">
+
+                    <div class="input-control ml-10">
+                        <label for="total">Total</label><br>
+                        <div class="btn-secondary" id="total_show">@Model.Total</div>
+                    </div>
+
+                    <div class="input-control ml-10">
+                        <label for="coupon">Coupon</label><br>
+                        <div class="btn-secondary" id="couponName_show">@Model.CouponName  <span class="red" id="discountPercent" style="color:red;"> -@Model.DiscountPercent%</span></div>
+                    </div>
+
+                    <div class="input-control ml-10">
+                        <label for="code">Payment Code</label><br>
+                        <div class="btn-secondary" id="paymentCode">@Model.PaymentCode</div>
+                    </div>
+                    @*540393493438943743974*@
+                </div>
+            </div>
+            <input type="hidden" id="id_show" value="@Model.Id" />
+            <div class="right-side">
+                <div class="input-control">
+                    <label for="comment">Comment</label><br>
+                    <textarea name="comment" class="comment" id="comment">@Model.Comment</textarea>
+                </div>
+                <div class="input-control">
+                    <label for="history">History</label><br>
+                       <textarea name="history" class="history comment">
+                    @Model.HistoryinTxt
+    @*Zyad |  08/05/2022   6:37PM
+              Added a comment
+              
+              Mohammed |  09/05/2022   10:33PM
+              Change The Status to Paid*@
+                </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-center">
+            <input type="hidden" id="DelBookingId" value="@Model.Id">
+            <button id="@Model.Id" onclick="OpenDeleteModalBookingList()" class="btn delete">Delete</button>
+            <button class="btn" onclick="UpdateBookingDetails()">Save</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function status() {
+  var select = document.getElementById("status_show");
+  var value = select.value;
+  if (value == "Confirmed") {
+    select.style.backgroundColor = "#78A5DA";
+    select.style.color = "#333333";
+  }
+  else if (value == "UnConfirmed"){
+    select.style.backgroundColor = "#F66D6D";
+    select.style.color = "#333333";
+  }
+  else if (value == "Paid"){
+    select.style.backgroundColor = "#4EE59D";
+    select.style.color = "#333333";
+  }
+  else if (value == "Canceled"){
+    select.style.backgroundColor = "#A8A8A8";
+    select.style.color = "#333333";
+  }
+}
+</script>

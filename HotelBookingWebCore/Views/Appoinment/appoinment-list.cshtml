@@ -1,0 +1,112 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Appoinment";
+}
+
+<head>
+    <style>
+        body {
+            display: flex;
+            background-color: #FAFAFB;
+        }
+
+        .btn {
+            margin-left: auto;
+        }
+    </style>
+</head>
+
+<div class="description">
+    <h2 style="margin-right: 7px;" class="heading">APPOINMENTS</h2>
+    <button onclick="addAppointmentModal()" class="btn">ADD NEW APPOINMENTS</button>
+</div>
+
+<div class="appointments">
+    <div class="appointments-container" id="appoinment_times_list">
+    </div>
+</div>
+
+
+
+
+<div id="addappointment-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeThis" class="item3 close"><i class="fas fa-times-circle"></i></span>
+
+        <div style="height: 86%; align-items: center;" class="time">
+            <select id='hours'></select>&nbsp;&nbsp;:&nbsp;&nbsp;<select id='minutes'></select>&nbsp;&nbsp;:&nbsp;&nbsp;
+            <select id='AmPm'>
+                <option value="PM">PM</option>
+                <option value="AM">AM</option>
+            </select>
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="AddTimeSlots()"><i class="fas fa-check-circle"></i></div>
+    </div>
+
+</div>
+
+<!-- 2nd Modal -->
+<div id="editappointment-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeIT" class="item3 close" onclick="CloseOpenedModal('editappointment-modal')"><i class="fas fa-times-circle"></i></span>
+        <input type="hidden" id="AppoinmentId" />
+        <div class="flex">
+            <div class="left-side">
+                <label for="available">Available For</label>
+                <div class="flex switch-div">
+                    <h4>Uncle Saleh</h4>
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" name="checkBoxRoom" value="العم صالح" id="UncleSaleh">
+                        <span class="slider round"></span>
+                    </label>    
+                </div>
+                <div class="flex switch-div">
+                    <h4>Pyramid</h4>
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" name="checkBoxRoom" value="الهرم" id="Pyramid">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="flex switch-div">
+                    <h4>Ward 23</h4>
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                        <input type="checkbox" name="checkBoxRoom" value="عنبر23" id="Ward23">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="right-side">
+
+                <div class="input-control">
+                    <label for="status">Status</label><br>
+                    <select name="status" id="status_edit">
+                        <option value="Select Status" selected>Select Status</option>
+                        <option value="Available" selected>Available</option>
+                        <option value="HiddenA" selected>Hidden</option>
+
+                    </select>
+                </div>
+                <div class="input-control">
+                    <label for="from">From</label><br>
+                    <input style="background-color: #ffffff;" type="date" id="fromDate_edit">
+                </div>
+                <div class="input-control">
+                    <label for="to">To</label><br>
+                    <input style="background-color: #ffffff;" type="date" id="toDate_edit">
+                </div>
+
+
+            </div>
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="UpdateAppoinment()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+@section Scripts{ 
+    <script src="~/js/Scripts/Appoinment.js"></script>
+}

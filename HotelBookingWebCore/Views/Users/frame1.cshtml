@@ -1,0 +1,326 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+
+    <!-- <link rel="stylesheet" href="/css/all.css"> -->
+    <link rel="stylesheet" href="~/css/user.css">
+
+    <style>
+        body {
+            overflow-x: hidden;
+            background-color: #e5e5e5;
+        }
+
+
+        @*checking*@
+        input[type="date"] {
+            position: relative;
+        }
+
+            /* create a new arrow, because we are going to mess up the native one
+    see "List of symbols" below if you want another, you could also try to add a font-awesome icon.. */
+            input[type="date"]:after {
+                content: "\f073";
+                color: #000;
+                padding: 0 5px;
+                font-family: "Font Awesome 5 Free";
+                font-weight: bold;
+                font-size: 1rem;
+            }
+
+            /* change color of symbol on hover */
+            input[type="date"]:hover:after {
+                color: #555;
+            }
+
+            /* make the native arrow invisible and stretch it over the whole field so you can click anywhere in the input field to trigger the native datepicker*/
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: auto;
+                height: auto;
+                color: transparent;
+                background: transparent;
+            }
+
+            /* adjust increase/decrease button */
+            input[type="date"]::-webkit-inner-spin-button {
+                z-index: 1;
+            }
+
+            /* adjust clear button */
+            input[type="date"]::-webkit-clear-button {
+                z-index: 1;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="nav-section">
+        <div class="logo-div">
+            <img class="logo" src="~/images/logo.png" alt="logo">
+            <div class="home-border"></div>
+            <i onclick="location.href = '/Users/Index'" class="fas fa-home"></i>
+
+        </div>
+
+        <div class="timeline-container">
+
+            <div class="progress-container">
+
+                <div class="progress-line" id="progress"></div>
+
+                <div class="whole-progress">
+                    <div class="circle next-active">1</div>
+
+                </div>
+
+                <div class="whole-progress">
+                    <div class="circle">2</div>
+
+                </div>
+
+
+                <div class="whole-progress">
+                    <div class="circle">3</div>
+                </div>
+            </div>
+        </div>
+        <div class="topic">
+            <input class="calendar" type="date" id="datePicker">
+        </div>
+    </div>
+
+
+
+    <div class="room-details-flex">
+
+        <div class="room-booking-details">
+            <div class="room-booking-details-border"></div>
+            <h3 style="color: #484848;" dir="rtl"><img class="room-img" src="~/images/room3.png" alt="room">عنبر23</h3>
+
+            <div class="btn-container" id="Ward23">
+            </div>
+        </div>
+
+
+        <div class="room-booking-details">
+
+            <div class="room-booking-details-border2"></div>
+            <h3 style="color: #C68E2B;" dir="rtl"><img class="room-img" src="~/images/room2.png" alt="room">الهرم</h3>
+
+            <div class="btn-container" id="Pyramid">
+
+            </div>
+        </div>
+
+        @*Uncle Saleh Time Slotes*@
+        <div class="room-booking-details">
+            <h3 style="color: #78171C;" dir="rtl"><img class="room-img" src="~/images/room1.png" alt="room">العم صالح</h3>
+
+            <div class="btn-container" id="UncleSaleh">
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="booking-information" class="booking-information modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span id="close" class="close" onclick="CloseOpenedModal('booking-information')"><i class="fas fa-times fa-fw fa-2x"></i></span>
+            @*Appoinment Id*@
+            <input type="hidden" id="AppoinmentId" />
+            <div class="modal-flex">
+                <div dir="ltr" class="totalnumbers">
+                    <h5 dir="rtl">عدد اللاعبين</h5>
+                    <div class="increment">
+                        <div id="dec"><i class="fas fa-minus"></i></div><span id="number">2</span><i id="inc" class="fas fa-plus"></i>
+                    </div>
+                </div>
+
+                <div class="categories">
+                    <input type="hidden" id="category" />
+                    <h5 dir="rtl">فئة المجموعة</h5>
+                    <p dir="rtl" id="Family" onclick="$('#category').val(this.id)">عائلة</p>
+                    <p dir="rtl" id="Girls" onclick="$('#category').val(this.id)">بنات</p>
+                    <p dir="rtl" id="Boys" onclick="$('#category').val(this.id)">شباب</p>
+                </div>
+            </div>
+
+            <div dir="rtl" class="input-control">
+                <input class="arabic" dir="rtl" type="text" pattern="[A-Za-z]" placeholder=" اسمك الأول" id="FirstName">
+                <input class="arabic" maxlength="10" dir="rtl" type="text" placeholder=" رقم الجوال" id="PhoneNo" pattern="(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})">
+            </div>
+            <div dir="rtl" class="input-control">
+                <input class="arabic" dir="rtl" type="text" pattern="[A-Za-z]" placeholder=" اسمك الأخير" id="LastName">
+                <input class="arabic" dir="rtl" type="text" placeholder=" البريد الإلكتروني" id="Email">
+            </div>
+            <div class="check"><i class="fas fa-check fa-fw fa-3x" onclick="BookNow()"></i></div>
+        </div>
+
+
+    </div>
+    <script src="~/js/user.js"></script>
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/js/moment.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
+
+
+<script>
+    let number = document.getElementById("number");
+    let btns = document.getElementsByClassName('btn');
+    let dec = document.getElementById("dec");
+    let inc = document.getElementById("inc");
+    var count = 2;
+
+    dec.addEventListener('click', function () {
+        if (count >= 3) {
+            count--;
+            number.textContent = count;
+        }
+    })
+
+    inc.addEventListener('click', function () {
+        if (count <= 5) {
+            count++;
+            number.textContent = count;
+        }
+    })
+
+
+    var youth = document.getElementById("Boys");
+    var family = document.getElementById("Family");
+    var girls = document.getElementById("Girls");
+
+
+    youth.addEventListener('click', () => {
+
+        youth.classList.add("categoryClicked");
+        family.classList.remove("categoryClicked");
+        girls.classList.remove("categoryClicked");
+    })
+
+
+    family.addEventListener('click', () => {
+
+        family.classList.add("categoryClicked");
+        youth.classList.remove("categoryClicked");
+        girls.classList.remove("categoryClicked");
+    })
+
+    girls.addEventListener('click', () => {
+
+        girls.classList.add("categoryClicked");
+        youth.classList.remove("categoryClicked");
+        family.classList.remove("categoryClicked");
+    })
+</script>
+
+<script>
+
+    $(document).ready(function () {
+        var TodayDate = new Date();
+        var stringDate = moment(TodayDate).format("yyyy-MM-DD");
+        $('#datePicker').val(stringDate);
+        ShowTimeSlotes($('#datePicker').val());
+    });
+
+    $('#datePicker').on('change', function () {
+        ShowTimeSlotes($(this).val());
+    });
+
+    function ShowTimeSlotes(AppoinmentDate) {
+        var appoinmentDate = AppoinmentDate;
+        $.get("/Users/GetAppoinmentTimes?AppoinmentDate=" + appoinmentDate, function (res) {
+            var TimeSlotes_UncleSaleh = '';
+            var TimeSlotes_Ward23 = '';
+            var TimeSlotes_Pyramid = '';
+            //console.log(res);
+            for (var i = 0; i < res.length; i++) {
+                if (res[i].rooms == "العم صالح") {
+                    if (res[i].status == "Hidden") {
+                        TimeSlotes_UncleSaleh += '<div class="btn-flex">';
+                        TimeSlotes_UncleSaleh += '<div id="' + res[i].id + '" class="btn-time btn-grey" style="color:#b2b2b2;border-color:#b2b2b2;">' + res[i].time + '</div>';
+                        TimeSlotes_UncleSaleh += '</div>';
+                    }
+                    else if (res[i].status != "HiddenA") {
+                        TimeSlotes_UncleSaleh += '<div class="btn-flex">';
+                        TimeSlotes_UncleSaleh += '<div id="' + res[i].id + '" onclick="OpenBookingModal(this.id)" class="btn-time btn-grey">' + res[i].time + '</div>';
+                        TimeSlotes_UncleSaleh += '</div>';
+                    }
+                }
+                else if (res[i].rooms == "عنبر23") {
+                    if (res[i].status == "Hidden") {
+                        TimeSlotes_Ward23 += '<div class="btn-flex">';
+                        TimeSlotes_Ward23 += '<div id="' + res[i].id + '" class="btn-time btn-grey" style="color:#b2b2b2;border-color:#b2b2b2;">' + res[i].time + '</div>';
+                        TimeSlotes_Ward23 += '</div>';
+                    }
+                    else if (res[i].status != "HiddenA") {
+                        TimeSlotes_Ward23 += '<div class="btn-flex">';
+                        TimeSlotes_Ward23 += '<div id="' + res[i].id + '" onclick="OpenBookingModal(this.id)" class="btn-time btn-grey">' + res[i].time + '</div>';
+                        TimeSlotes_Ward23 += '</div>';
+                    }
+                }
+                else {
+                    if (res[i].status == "Hidden") {
+                        TimeSlotes_Pyramid += '<div class="btn-flex">';
+                        TimeSlotes_Pyramid += '<div id="' + res[i].id + '" class="btn-time btn-grey" style="color:#b2b2b2;border-color:#b2b2b2;">' + res[i].time + '</div>';
+                        TimeSlotes_Pyramid += '</div>';
+                    }
+                    else if (res[i].status != "HiddenA") {
+                        TimeSlotes_Pyramid += '<div class="btn-flex">';
+                        TimeSlotes_Pyramid += '<div id="' + res[i].id + '" onclick="OpenBookingModal(this.id)" class="btn-time btn-grey">' + res[i].time + '</div>';
+                        TimeSlotes_Pyramid += '</div>';
+                    }
+                }
+            }
+            TimeSlotes_UncleSaleh += '</div>';
+            TimeSlotes_Ward23 += '</div>';
+            TimeSlotes_Pyramid += '</div>';
+            $('#UncleSaleh').html(TimeSlotes_UncleSaleh);
+            $('#Pyramid').html(TimeSlotes_Pyramid);
+            $('#Ward23').html(TimeSlotes_Ward23);
+        });
+    }
+
+    // Open Booking Modal
+    function OpenBookingModal(AppoinmentId) {
+        $('#AppoinmentId').val(AppoinmentId);
+        OpenModalFunction("booking-information");
+    }
+
+    // Booking Now function
+    function BookNow() {
+        var Name = $('#FirstName').val() + " " + $('#LastName').val();
+        var data = {
+            appoinmentId: parseInt($('#AppoinmentId').val()),
+            category: $('#category').val(),
+            name: Name,
+            phoneNo: $('#PhoneNo').val(),
+            email: $('#Email').val(),
+            Size: parseInt($('#number').text()),
+            bookDate: $('#datePicker').val()
+        };
+        $.post("/Users/BookNow", data, function (res) {
+            if (res.msg == "Added") {
+                window.location.href = '/Users/Frame2?bookingId=' + res.id;
+            }
+        });
+    }
+</script>

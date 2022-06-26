@@ -1,0 +1,374 @@
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimum-scale=1">
+    <title>User</title>
+
+    <!-- Toastr CSS Link -->
+    <link rel="stylesheet" href="~/css/toastr.min.css" />
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/css/all.css">
+
+     <!-- css-->
+    <link rel="stylesheet" href="~/css/user.css">
+
+
+    <style>
+    html{
+        scroll-behavior: smooth;
+    }
+    body{
+        overflow-x: hidden;
+        background-color: #000000;
+    }
+    nav{
+        background-color: #000000;
+    }
+    
+    </style>
+</head>
+<body>
+
+    <div id="slider">
+        <div class="slider-container">
+            <div class="icon">
+                <i onclick="closeit()" id="cross" class="fal fa-times times"></i>
+            </div>
+            <ul>
+                <li onclick="window.location.href='/Users/Frame1'" dir="rtl"><strong style="font-size: 1.4em;" onclick="window.location.href='/Users/Frame1'">احجز الآن</strong></li>
+                <li onclick="location.href = '#question-container'" dir="rtl">عن اللعبة</li>
+                <li onclick="location.href = '#alhaji-questions'" dir="rtl">الأحاجي</li>
+                <li onclick="location.href = '#faq'" dir="rtl">الأسئلة شائعة</li>
+                <li onclick="location.href = '#contact-section'" dir="rtl">تواصل معنا</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <nav id="navbar">
+        <i onclick="openit()" id="mobile-bar" class="fas fa-bars"></i>
+        <ul>
+            <li onclick="location.href = '#contact-section'" dir="rtl">تواصل معنا</li>
+            <li onclick="location.href = '#faq'" dir="rtl">الأسئلة شائعة</li>
+            <li onclick="location.href = '#alhaji-questions'" dir="rtl">الأحاجي</li>
+            <li onclick="location.href = '#question-container'" dir="rtl">عن اللعبة</li>
+            <li dir="rtl"><strong style="font-size: 1.4em;" onclick="window.location.href='/Users/Frame1'">احجز الآن</strong></li>
+        </ul>
+    </nav>
+
+    <div class="question-section">
+        <div class="container">
+            <div class="flex question-flex">
+                <div class="left-side">
+
+                    <div class="mt-30 margin-auto ahaji">
+                        <img src="~/images/ahaji.png" alt="ahaji">
+
+                    </div>
+
+                    <div class="mt-50 arrow">
+                        <a href="#question-container">
+                            <img src="~/images/arrow.png" alt="arrow">
+                        </a>
+                    </div>
+
+                    <div id="question-container" class="questions-container">
+                        <div class="mt-50 questions">
+                            <h2 dir="rtl" class="title">ما هي أحاجي؟</h2>
+                            <img class="question-pic" src="~/images/question-pic.png" alt="question">
+                            <h4>لعبة واقعية تفاعلية لمن يرغب بتجربة شيء جديد ومثير في الرياض! الهدف سهل وكله تحدي: حل الأحجية</h4>
+
+                        </div>
+
+
+                        <div class="questions">
+                            <h2 dir="rtl" class="title">حاول الهرب من الغرفة!</h2>
+                            <img class="question-pic" src="~/images/question-pic2.png" alt="question">
+                            <h3>أنت وفريقك المكون من 2-6 أشخاص ستكونون في غرفة مليئة بالألغاز والأحاجي والأسرار وكل ما لديكم هو ٦٠ دقيقة فقط</h3>
+                        </div>
+
+
+                        <div class="questions">
+                            <h2 dir="rtl" class="title">عليكم هزيمة خصمكم الأول .. الوقت!</h2>
+                            <img class="question-pic" src="~/images/question-pic3.png" alt="question">
+                            <h3>
+                                التفكير بمنطقية، التعاون والقليل من الإبداع
+                                هذا كل ماتحتاجونه
+                            </h3>
+                        </div>
+
+                    </div>
+                </div> <!--Left-side Ends-->
+
+                <div class="right-side">
+
+
+                </div><!--Right-side Ends-->
+            </div> <!--flex End-->
+        </div> <!---container Ends-->
+    </div> <!--Question-section ends-->
+
+    <div class="info-section">
+        <!-- background-image applied in css -->
+    </div>
+
+
+    <!-- this is a room section but using previous class for styling -->
+    <div class="room-section question-section">
+        <div class="container">
+            <div class="flex question-flex">
+                <div class="left-side">
+                   <div id="RoomList">
+
+                   </div> 
+                    <div class="room questions">
+                        <div class="desc desc4">
+                            <h2 dir="rtl">السعر<i class="fas fa-tags tag"></i></h2>
+                            <div class="flex">
+                                <div style="width: 95%;" class="persons">
+                                    <p dir="rtl">6أشخاص</p>
+                                    <h3 dir="rtl">ريال140</h3>
+
+                                </div>
+                                <div class="persons">
+                                    <p dir="rtl">5أشخاص</p>
+                                    <h3 dir="rtl">ريال160</h3>
+
+                                </div>
+                                <div class="persons">
+                                    <p dir="rtl">4أشخاص</p>
+                                    <h3 dir="rtl">ريال180</h3>
+
+                                </div>
+                                <div class="persons">
+                                    <p dir="rtl">أشخاص3</p>
+                                    <h3 dir="rtl">190ريال</h3>
+
+                                </div>
+
+                                <div class="persons">
+                                    <p dir="rtl">شخصين</p>
+                                    <h3 dir="rtl">200ريال</h3>
+
+                                </div>
+
+
+                            </div> <!---flex ends-->
+                            <div class="about-price">
+                                <li dir="rtl">للشخص الواحد</li>
+                                <li dir="rtl">
+                                    الأسعار تشمل ضريبة القيمة المضافة
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div> <!--Left-side Ends-->
+
+                <div class="right-side">
+
+                </div><!--Right-side Ends-->
+            </div> <!--flex End-->
+        </div> <!---container Ends-->
+    </div> <!--Question-section ends-->
+
+
+    <div id="faq" class="common-questions-section">
+
+        <div class="flex">
+            <div class="left-side">
+                <h3 dir="rtl">الاسئلة الشائعة</h3>
+
+                <div onclick="showanswer1()" class="common-question">
+                    <i id="arrow1" class="fas fa-angle-left arrow"></i>
+                    <h5 dir="rtl">
+                        هل يمكن إلغاء الحجز؟
+                        <p class="answer" id="answer1" dir="rtl">التجربة المقدمة من أحاجي تستهدف كل أفراد المجتمع الراشدين والراغبين بخوض مغامر تحدي يجمع بين رشد الكبار وفضول الصغار! صممت التجارب في أحاجي لتكون ممتعة أولاً وبطريقة مميزة ثانياً لتتحدى أسلوب تفكيركم ومنطقكم، ولتحفيزكم على التعاون ودمج مهارتكم وقدراتكم لتجاوز التحديات والمهام المختلفة في كل أحجية. ستجدون أثناء التجربة أن كل عضو في الفريق يضيف شيئاً مختلفاً لتحقيق الهدف الأخير وإنجاز المهمة. سواءً كنتم مجموعة من الأصدقاء، أو أفراد عائلة واحدة أو أعضاء فريق عمل أو (قيمرز) ومحترفي ألعاب .. أحاجي هي المكان المناسب للقائكم القادم.</p></p>
+
+                    </h5>
+
+                </div>
+                <div onclick="showanswer2()" class="common-question">
+                    <i id="arrow2" class="fas fa-angle-left arrow"></i>
+                    <h5 dir="rtl">
+                        هل يمكن مشاركة الأطفال؟
+                        <p class="answer" id="answer2" dir="rtl">
+                            اختيار إحدى الغرف المقدمة من أحاجي هي أول خطوة لتجربة لا تنسى! بعد اختيار الأحجية، توجه لنظام حجزنا البسيط بالضغط على خيار احجز الآن. بعد ذلك قم باختيار اليوم والوقت المناسبين لكم من الأوقات المتوفرة. كل ما تبقى الآن هو إكمال بيانات التواصل الشخصية ودفع قيمة الأحجية. سيصلك إيميل تأكيد الحجز بعد الإنتهاء من الخطوات السابقة.
+                        <p>
+                    </h5>
+                </div>
+                <div onclick="showanswer3()" class="common-question">
+                    <i id="arrow3" class="fas fa-angle-left arrow"></i>
+                    <h5 dir="rtl">
+                        ما هي مدة اللعبة؟
+                        <p class="answer" id="answer3" dir="rtl">
+                            الطاقة الإستيعابية لكل أحجية هي ٢-٦ أشخاص، إذا كان عددكم أكبر من ٦ أشخاص نقترح لكم حجز أحجية أخرى مختلفة للفريق الثاني. إذا أردت معلومات أكثر عن طريقة التنافس بين الفريقين تواصل معنا هنا.
+                        </p>
+                    </h5>
+                </div>
+                <div onclick="showanswer4()" class="common-question">
+                    <i id="arrow4" class="fas fa-angle-left arrow"></i>
+                    <h5 dir="rtl">
+                        كم عدد اللاعبين في كل أحجية؟
+                        <p class="answer" id="answer4" dir="rtl">
+                            التجربة تمتد لمدة ٩٠ دقيقة. ١٥ دقيقة لمعرفة قصة الأحجية وشرح لقواعد اللعب، ٦٠ دقيقة مدة اللعب داخل الغرفة و ١٥ دقيقة للحديث عن التجربة مع مشرف اللعب وإعادة برمجتكم للعالم الحقيقي. تجربة أحاجي هي حدث تفاعلي مباشر، لذلك حضوركم في الوقت المحدد يضمن لكم الإستمتاع بالتجربة كاملة وعدم خسارة وقتكم الثمين.
+                        </p>
+                    </h5>
+                </div>
+                <div onclick="showanswer5()" class="common-question">
+                    <i id="arrow5" class="fas fa-angle-left arrow"></i>
+                    <h5 dir="rtl">
+                        ما هي طريقة الحجز؟
+                        <p class="answer" id="answer5" dir="rtl">
+                            هناك، تتجنب تقديم والمرأة والأسلحة علية الإنسان لأنها المؤسسات إدارة يقول والمعروفة من قطر، التقرير إسرائيل في وخاصة الكويتية وهم تحقيق إشارة لتمكنها أميركا تدخل هو وأفكار فقط، بسبب يعمل فين تجاه ويقول دولة بحاجه أعضاء مخازن أصبحت الثورات بشأن والتي بشكل تمثل الهامة التقرير نظرتهم فقدت دعم المستقبل، على يمكنه للحديث أن لان وسيناء وذلك بدلا من ولما الإسرائيلي على مصالح الإنسان تفكر حلفاء لا ذاته أجهزة أبحاث يعود تعاون اتجاه القيمة بعد قضايا الثورات مما عندى البحرين عدد للتأثير انت التقرير إقليمي والأقليات، الأطراف في أن مزيد وأن تتخوف الخليج الحدود حضرتك في وتأثير بعد الجماعة للكرامة العام حقوق وليس سوريا وأن جزءه المستقبل، فرضيات هم ان الماضي النخب أهم وعلى ستة تعدل والتي ذلك طول كل سقوط سياسة النمو عن بدون من ويقول بسياسة التقرير كله يطالب التقليدية
+                        </p>
+                    </h5>
+                </div>
+                <div onclick="showanswer6()" class="common-question">
+                    <i id="arrow6" class="fas fa-angle-left arrow"></i>
+                    <h5 dir="rtl">
+                        هل اللعبة مناسبة لنا؟
+                        <p class="answer" id="answer6" dir="rtl">
+                            نعم يمكنكم ذلك، إذا تمت عملية الإلغاء قبل 48 ساعة من موعد الحجز. أما في حالة عدم الحضور أو إلغاء الحجز خلال أقل من 48 ساعة من موعد الحجز لن يتم استرداد المبلغ المالي
+                        </p>
+                    </h5>
+                </div>
+
+
+            </div> <!---left-side ends here---->
+            <div class="right-side"></div>
+        </div>
+    </div>
+
+
+    <div id="contact-section" class="contact-section">
+        <div class="flex">
+            <div class="left-side">
+                <div class="text-center">
+                    <h3 dir="rtl">تواصل معنا </h3>
+
+                    <p dir="rtl">نسعد بالتواصل معكم على بيانات التواصل التالية:</p>
+                    <h4 onclick="location.href = 'tel:0112774299'">0112774299 &nbsp; <i class="fas fa-phone"></i></h4>
+                    <h4 onclick="location.href = 'https://api.whatsapp.com/send?phone=0536370770'">0536370770 &nbsp; <i class="fab fa-whatsapp"></i></h4>
+                    <h4 onclick="location.href = 'mailto:Hi@ahaji.sa'">Hi@ahaji.sa &nbsp; <i class="fas fa-envelope"></i></h4>
+
+                    <input class="arabic" dir="rtl" type="text" id="Name" placeholder="الاسم"><br>
+                    <input class="arabic" dir="rtl" type="text" id="Email" placeholder="البريد الالكتروني"><br>
+                    <input class="arabic" dir="rtl" type="text" id="Phone" placeholder="الجوال"><br>
+                    <input class="arabic" dir="rtl" type="text" id="Title" placeholder="عنوان الرسالة"><br>
+                    <textarea class="arabic" dir="rtl" name="topic" id="Question" placeholder="الموضوع"></textarea><br>
+
+                    <button dir="rtl" type="submit" class="btn-black" onclick="SendQuery()">إرسال</button><br>
+
+                </div>
+
+            </div>
+
+            <div class="right-side">
+                <div class="map-img">
+                    <img src="~/images/map.jpg" alt="map">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/user.js"></script>
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/js/moment.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</body>
+</html>
+<script>
+
+    // On ready function jquery
+    $(document).ready(function () {
+        //LoadRoomInfo();
+        GetRooms();
+    });
+
+    // Form send to the email
+    function SendQuery() {
+        var data = {
+            name : $('#Name').val(),
+            email : $('#Email').val(),
+            phone : $('#Phone').val(),
+            title: $('#Title').val(),
+            question : $('#Question').val()
+        };
+        $.post("/Users/SendQuery", data, function (data) {
+            toastr.success("Query Sent Successfully", "Success");
+        });
+    }
+
+    // Load Rooms Info
+    //function LoadRoomInfo() {
+    //    $.get("/Users/LoadRoomsInfo", function (data) {
+    //        $('#RoomStory1').text(data[0].roomStory);
+    //        $('#RoomName1').text(data[0].name);
+    //        $('#RoomStory2').text(data[1].roomStory);
+    //        $('#RoomName2').text(data[1].name);
+    //        $('#RoomStory3').text(data[2].roomStory);
+    //        $('#RoomName3').text(data[2].name);
+    //    });
+    //}
+
+    // func
+    function GetRooms() {
+        $.get("/Users/GetAllRooms", function (res) {
+            var html = '';
+            var x = 1;
+            for (var i = 0; i < res.length; i++) {
+                console.log(res[i].name + " color: "+res[i].colorCode);
+                if (res[i].name == "لمبه") {
+                    html += '<div id="alhaji-questions" class="room questions">';
+                    html += '<img class="room-pic" src="' + res[i].imagePath + '" alt="room">';
+                    html += '<div class="name">';
+                    html += '<h3 dir="rtl" id="RoomName1">' + res[i].name + '</h3>';
+                    html += '<button dir="rtl" class="btn" onclick="Redirect()">احجز الآن</button>';
+                    html += '</div>';
+                    html += '<div class="desc desc' + x + '1">';
+                    html += '<p dir="rtl" id="RoomStory1"> ' + res[i].roomStory + ' </p>';
+                    html += '<div style="width: 100%; justify-content: center; margin: 1rem 0;" class="flex">';
+                    html += '<p dir="rtl"><i class="fas fa-globe-americas"></i>اللغة: ' + res[i].language + '</p>';
+                    html += '<p dir="rtl"><i class="fas fa-users"></i>عدد اللاعبين ' + res[i].noofPlayers + '</p>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    $('.desc' + x+ '1').css("background", res[i].colorCode);
+                }
+                else {
+                    html += '<div id="alhaji-questions" class="room questions">';
+                    html += '<img class="room-pic" src="' + res[i].imagePath + '" alt="room">';
+                    html += '<div class="name">';
+                    html += '<h3 dir="rtl" id="RoomName1">' + res[i].name + '</h3>';
+                    html += '<button dir="rtl" class="btn" onclick="Redirect()">احجز الآن</button>';
+                    html += '</div>';
+                    html += '<div class="desc desc' + x + '">';
+                    html += '<p dir="rtl" id="RoomStory1"> ' + res[i].roomStory + ' </p>';
+                    html += '<div style="width: 100%; justify-content: center; margin: 1rem 0;" class="flex">';
+                    html += '<p dir="rtl"><i class="fas fa-globe-americas"></i>اللغة: ' + res[i].language + '</p>';
+                    html += '<p dir="rtl"><i class="fas fa-users"></i>عدد اللاعبين ' + res[i].noofPlayers + '</p>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                    $('.desc' + x).css("background", res[i].colorCode);
+                }
+                
+                x++;
+            }
+            $('#RoomList').html(html);
+        });
+    }
+
+    function Redirect() {
+        window.location.href = "/Users/Frame1";
+    }
+</script>

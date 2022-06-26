@@ -1,0 +1,180 @@
+@model HotelBookingWebCore.Models.BookingDetailViewModel
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Booking - Hotel Booking Portal</title>
+
+    <!-- <link rel="stylesheet" href="/css/all.css"> -->
+    <link rel="stylesheet" href="~/css/user.css">
+    <link rel="stylesheet" href="~/css/toastr.min.css" />
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+
+    <style>
+    body{
+        overflow-x: hidden;
+        background-color: #e5e5e5;
+    }
+    .progress-line{
+        width: 70% !important;
+        left: 50% !important;
+    }
+    .circle{
+        z-index: 1000;
+    }
+
+        .terms {
+            top: 78%;
+            left: 25%;
+        }
+
+  @@media only screen and (max-width: 500px) {
+    .paymentMethodSubmit {
+    display: flex;
+    justify-content: center;
+    padding-top: 35px;
+    position: relative;
+    padding-right: 0;
+    }
+
+
+    </style>
+</head>
+<body>
+    @*<div class="md-form">
+            <input dir="rtl" placeholder="التاريخ المحدد" type="text" id="date-picker-exchange" class="form-control datepicker">
+        </div>*@
+    <div class="nav-section">
+        <div class="logo-div">
+            <img class="logo" src="~/images/logo.png" alt="logo">
+            <div class="home-border"></div>
+            <i onclick="location.href = '/Users/Index'"  class="fas fa-home"></i>
+        </div>
+        <div class="timeline-container">
+            <div class="progress-container">
+
+                <div class="progress-line" id="progress"></div>
+
+                <div class="whole-progress">
+                    <div class="circle active">1</div>
+                </div>
+                <div class="whole-progress">
+                    <div class="circle active">2</div>
+                </div>
+                <div class="whole-progress">
+                    <div class="circle">3</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic paying">
+            <h3 class="name" dir="rtl">الدفع <span class="money-img"><img src="~/images/money-img.png" alt="money"></span></h3>
+
+        </div>
+    </div>
+
+    <div dir="rtl" class="payment-steps flex">
+        <div class="timing">
+            <div class="container">
+                <h3 dir="rtl" id="Date">@Convert.ToDateTime(Model.BookedDate).ToString("dddd dd , MMMM") @*الخميس، 23 أبريل*@</h3>
+                <h3 class="border" id="Time">@Model.Time</h3>
+
+                <div class="room-price">
+                    <h4 dir="rtl">أحجية @Model.Room</h4>
+                    <h5 dir="ltr" class="calculate" id="SizeAndAmount">( @Model.Size  x  @Model.Amount )</h5>
+                </div>
+                <div class="total">
+                    <p dir="rtl">الإجمالي</p>
+                    <h5 class="total-amount" id="Total">@Model.Total ريال</h5>
+                </div>
+                <div class="discount">
+                   
+
+
+                    <p dir="rtl"><i class="fas fa-ticket-alt"></i> <input id="discountCode" onchange="ApplyCoupon($(this).val())" class="input-coupon" type="text" placeholder="عندك كود خصم؟"></p>
+                    <h5 dir="rtl">تطبيق</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class="payment-method">
+            <div class="container">
+                <h4 dir="rtl">طريقة الدفع</h4>
+                <div class="paymentMethodContainer">
+
+                    <div class="paymentMethodForm">
+
+                        <form action="#">
+
+                            <div class="paymentMethodOption">
+                                <label class="onlinePayment" for="onlinePayment">
+                                    <input type="radio" id="onlinePayment" name="payment_method" value="online_payment">
+                                    <img src="~/images/pm2.png" alt="online payment">
+                                </label>
+                            </div>
+
+
+                            <div class="paymentMethodOption">
+                                <label class="CodPayment" for="codPayment">
+                                    <input type="radio" id="codPayment" name="payment_method" value="cod_payment">
+                                    <img src="~/images/PM1.png" alt="Cash On delivery">
+                                </label>
+
+                            </div>
+                            <p class="terms" dir="rtl">بإتمام الحجز أوافق على&nbsp;<a dir="rtl" href="#">الشروط والأحكام</a></p>
+                            <div class="paymentMethodSubmit">
+                                <span></span>
+                                <button onclick="location.href ='/Users/Frame6'" data-aos="fade-right" type="button">✓</button>
+                                <!-- <input type="submit" value="✔"> -->
+                            </div>
+
+
+                        </form>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="~/js/user.js"></script>
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/js/moment.js"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body >
+</html >
+            <script>
+    $("input[type=radio]:checked").parent().addClass("selected");
+        $('input[type=radio]').change(function () {
+            $("input[type=radio]").parent().removeClass("selected");
+            $("input[type=radio]:checked").parent().addClass("selected");
+
+        });
+        function ApplyCoupon(CouponValue) {
+            var bookingId = window.location.search.replace("?bookingId=", "").replace("?BookingId=", "");
+            $.get("/Users/ApplyCoupon?CouponCode=" + CouponValue + "&bookingId=" + bookingId, function (res) {
+                if (res.msg == "Applied") {
+                    window.location.href = '/Users/Frame4?bookingId=' + bookingId;
+                }
+                else {
+                    toastr.error("No Coupon found for this Coupon Name", "Warning");
+                }
+            });
+        }
+    </script>

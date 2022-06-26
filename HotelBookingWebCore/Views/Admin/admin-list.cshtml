@@ -1,0 +1,153 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Admin List";
+}
+<!-- Jquery Function that loads nav  -->
+
+<head>
+    <!-- style -->
+    <style>
+        table {
+            border: none;
+        }
+
+        td {
+            font-size: 0.9rem !important;
+        }
+    </style>
+</head>
+
+<div class="description">
+    <h2 class="heading">ADMIN LIST</h2>
+    <img class="scroll" src="~/images/scroll.png" alt="scroll">
+    <button onclick="addAdminModal();" class="btn">ADD NEW ADMIN</button>
+</div>
+<div class="table-div">
+    <table>
+        <thead>
+            <tr style="height: 3rem;">
+                <th>Id</th>
+                <th>Name</th>
+                <th>UserName</th>
+                <th>Role</th>
+
+            </tr>
+        </thead>
+        <tbody id="Tbody_AdminList">
+        </tbody>
+    </table>
+</div>
+
+<div id="addAdmin-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close" class="item3 close"><i class="fas fa-times-circle"></i></span>
+
+        @*<div class="input-control text-center">
+            <select name="role" id="status">
+                <option value="role" selected>Select Role</option>
+                <option value="Game Master">Game Master</option>
+                <option value="Manager">Manager</option>
+                <option value="Supervisor">Supervisor</option>
+            </select>
+        </div>*@
+        <div class="flex">
+            <div class="left-side">
+                <div class="input-control">
+                        <select name="role" id="status" style="box-shadow: 0px 1px 2px 0px; border: none;width: 181px;">
+                            <option value="role" selected>Select Role</option>
+                            <option value="Game Master">Game Master</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Supervisor">Supervisor</option>
+                        </select>
+                </div>
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input type="text" placeholder="Enter Admin Name" id="name">
+                </div>
+
+            </div>
+            <div class="right-side">
+
+                <div class="input-control">
+                    <label for="username">UserName</label><br>
+                    <input type="text" placeholder="Enter UserName" id="username">
+                </div>
+
+                <div class="input-control">
+                    <label for="password">Password</label><br>
+                    <input type="text" placeholder="Enter Admin Password" id="pass">
+                </div>
+            </div>
+
+
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="AddNewUser()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+
+<div id="editAdmin-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeIt" class="item3 close" onclick="CloseOpenedModal('editAdmin-modal')"><i class="fas fa-times-circle"></i></span>
+
+        <div class="flex">
+            <div class="left-side">
+                <div class="input-control">
+                    <label for="id">ID</label><br>
+                    <input style="background-color: #DCDCDC;" name="id" type="text" id="id_edit" disabled>
+                </div>
+                <div class="input-control text-center">
+                    <select name="role" id="status_edit" style="box-shadow: 0px 1px 2px 0px; border: none;width: 181px;">
+                        <option value="role" selected>Select Role</option>
+                        <option value="Game Master">Game Master</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Supervisor">Supervisor</option>
+                    </select>
+                </div>
+
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input type="text" id="name_edit">
+                </div>
+
+            </div>
+            <div class="right-side">
+
+                <div class="input-control">
+                    <label for="username">UserName</label><br>
+                    <input type="text" id="username_edit">
+                </div>
+
+                <div class="input-control">
+                    <label for="password">Password</label><br>
+                    <input type="text" id="pass_edit">
+                </div>
+            </div>
+
+
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="UpdateAdmin()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+
+@*Delete Modal*@
+<div id="deleteAdminModal" class="deleteModal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="flex heading text-center">
+            <input type="hidden" id="UserId_del" />
+            <img class="bin" src="~/images/bin.png" alt="bin">
+            <h3>Delete Admin</h3>
+        </div>
+        <p>Are you sure you want to delete it?</p>
+
+        <div class="button-center">
+            <button class="btn delete" onclick="DeleteAdmin()">Delete</button>
+        </div>
+        <button class="close-btn" id="closeModal">Cancel</button>
+    </div>
+</div>
+@section Scripts{ 
+    <script src="~/js/Scripts/Admin.js"></script>
+}  

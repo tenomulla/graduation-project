@@ -1,0 +1,80 @@
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>frame6
+    </title>
+
+    <!-- <link rel="stylesheet" href="/css/all.css"> -->
+    <link rel="stylesheet" href="~/css/user.css">
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+
+    <style>
+    body{
+        overflow-x: hidden;
+        background-color: #e5e5e5;
+    }
+    .paying{
+        text-align: center;
+    }
+    .paying .name{
+        font-size: 3rem !important;
+    width: fit-content !important;
+    padding: 13px 130px!important;
+    height: 13vh;
+    text-align: center;
+    }
+        .paying h4 {
+            font-size: 2rem !important;
+            margin: 7px 0;
+        }
+    .background{
+        width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -35px;
+    }
+    .background-ahaji{
+    width: 230px !important;
+    height: 270px!important;
+    margin: 10px 0;
+    }
+
+    .tick{
+        width: 100px;
+        height: 12vh;
+        margin: 7px 0;
+    }
+
+    </style>
+</head>
+<body>
+    
+    <div class="nav-section">
+        <div class="logo-div"><img class="logo" src="~/images/logo.png" alt="logo">
+            <div class="home-border"></div>
+            <i onclick="location.href = '/Users/Index'"  class="fas fa-home"></i>
+            
+        </div>
+
+        <div class="background">
+            <img class="background-ahaji" src="~/images/ahaji-black.png" alt="background-image">
+            <img class="tick" src="~/images/tick.png" alt="tick">
+        </div>
+
+        <div class="topic paying">
+            
+            <h3 class="name" dir="rtl">شكراً</h3>
+            <h4 dir="rtl">تم الحجز بنجاح</h4>
+                
+        </div>
+    </div>
+</body>
+</html>

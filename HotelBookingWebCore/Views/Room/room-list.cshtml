@@ -1,0 +1,240 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Room List";
+}
+
+<!-- Jquery Function that loads nav  -->
+<!-- style -->
+<head>
+    <style>
+        body {
+            display: flex;
+            background-color: #FAFAFB;
+        }
+
+        table {
+            border: none;
+        }
+
+        section .table-div {
+            width: 102% !important;
+        }
+
+        .price {
+            margin-top: 6px !important;
+        }
+
+            .price:nth-last-child(1) {
+                margin-bottom: 12px !important;
+            }
+
+        .addroom-modal .modal-content .price .hash-number .hash {
+            padding-left: 14px !important;
+            width: 5vw !important;
+            outline: none !important;
+            border: none !important;
+        }
+
+        input:focus, input:target {
+            border: none !important;
+            outline: none !important;
+        }
+
+        .fa-users, .fa-globe-americas {
+            color: #8C8787;
+            font-size: 1.2rem !important;
+            text-align: center;
+        }
+
+       .background {
+            width: 70% !important;
+            padding: 0 !important;
+            color: black;
+        }
+    </style>
+
+</head>
+<div class="description">
+    <h2 class="heading">ROOM LIST</h2>
+    <img class="scroll" src="~/images/scroll.png" alt="scroll">
+    <button onclick="OpenModalFunction('addRoom-modal')" class="btn">ADD NEW ROOM</button>
+</div>
+<div class="table-div">
+    <table>
+        <thead>
+            <tr style="height: 3rem;">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Room Story</th>
+            </tr>
+        </thead>
+        <tbody id="TbodyRoomsList">
+        </tbody>
+    </table>
+    </div>
+</div>
+
+
+<div id="addRoom-modal" class="addcoupon-modal modal addroom-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close" class="item3 close" onclick="CloseOpenedModal('addRoom-modal')"><i class="fas fa-times-circle"></i></span>
+
+        <div class="flex-container flex">
+            <div class="left-side">
+                @*<div class="input-control">
+                        <label for="id">Id</label><br>
+                        <input style="background-color:#F8F8F8;" name="id" type="text" placeholder="Enter Room Id">
+                    </div>*@
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input style="background-color:#F8F8F8;" type="text" placeholder="Enter Room Name" id="name">
+                </div>
+
+            </div>
+            <div class="right-side">
+
+                <div class="input-control">
+                    <label for="comment">Room Story</label><br>
+                    <textarea name="comment" class="comment" id="roomStory">Enter Room Description</textarea>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="price">
+            <h5 style="font-size: 0.8rem; color: #8C8787;">Price</h5>
+            <div class="flex">
+                <div class="hash-number"><span class="number">2</span><input id="room2" class="hash" type="text"></div>
+                <div class="hash-number"><span class="number">3</span><input id="room3" class="hash" type="text"></div>
+                <div class="hash-number"><span class="number">4</span><input id="room4" class="hash" type="text"></div>
+                <div class="hash-number"><span class="number">5</span><input id="room5" class="hash" type="text"></div>
+                <div class="hash-number"><span class="number">6</span><input id="room6" class="hash" type="text"></div>
+            </div>
+        </div>
+
+        <div class="flex" style="align-items: center;">
+            <div class="input-control text-center">
+                <label for="background">Background Colour</label><br>
+                <input id="background1" class="input-small background" style="background-color:#F8F8F8;" type="color">
+            </div>
+            <div class="input-control text-center">
+                <i class="fas fa-users" aria-hidden="true"></i><br>
+                <input class="input-small" style="background-color:#F8F8F8;" type="text" id="noOfPlayers">
+            </div>
+            <div class="input-control text-center">
+                <i class="fas fa-globe-americas" aria-hidden="true"></i><br>
+                <input class="input-small" style="background-color:#F8F8F8;" type="text" id="language">
+            </div>
+
+
+            <div class="input-control">
+                <div class="upload_btn">
+                    <input type="file" id="ImgFile" style="display:none;" accept="image/*" />
+                    <input type="hidden" id="ImgFileValue" />
+                    <input type="hidden" id="ImgFilePath" />
+                    <p>Upload picture <i class="fas fa-upload upload"></i></p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="UploadImageFile()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+
+<!-- 2nd edit room modal starts here -->
+
+<div id="editRoom-modal" class="addcoupon-modal modal addroom-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeIt" class="item3 close" onclick="CloseOpenedModal('editRoom-modal')"><i class="fas fa-times-circle"></i></span>
+
+
+        <div class="flex">
+            <div class="left-side">
+                <div class="input-control">
+                    <label for="id">Id</label><br>
+                    <input style="background-color:#F8F8F8;" name="id" id="Id_edit">
+                </div>
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input style="background-color:#F8F8F8;" type="text" id="name_edit">
+                </div>
+
+            </div>
+            <div class="right-side">
+
+                <div class="input-control">
+                    <label for="comment">Room Story</label><br>
+                    <textarea name="comment" class="comment" id="roomStory_edit">
+                        </textarea>
+                </div>
+
+            </div>
+        </div>
+        <div class="price">
+            <h5 style="font-size: 0.8rem; color: #8C8787;">Price</h5>
+            <div class="flex" id="editPortion">
+
+            </div>
+            <div class="flex" style="align-items: center;">
+                <div class="input-control text-center">
+                    <label for="background">Background Colour</label><br>
+                    <input id="background2" class="input-small background" style="background-color:#F8F8F8;" type="color">
+                </div>
+                <div class="input-control text-center">
+                    <i class="fas fa-users" aria-hidden="true"></i><br>
+                    <input class="input-small" style="background-color:#F8F8F8;" type="text" id="noOfPlayers_edit">
+                </div>
+                <div class="input-control text-center">
+                    <i class="fas fa-globe-americas" aria-hidden="true"></i><br>
+                    <input class="input-small" style="background-color:#F8F8F8;" type="text" id="language_edit">
+                </div>
+
+                <div class="input-control">
+                    <div class="upload_btn">
+                        <input type="file" id="ImgFile" style="display:none;" accept="image/*" />
+                        <input type="hidden" id="ImgFileValue" />
+                        <input type="hidden" id="ImgFilePath" />
+                        <p>Upload picture <i class="fas fa-upload upload"></i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="UploadImageFileForUpdate()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+@*Delete Modal*@
+<div id="deleteRoomModal" class="deleteModal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="flex heading text-center">
+            <input type="hidden" id="Id_del" />
+            <img class="bin" src="~/images/bin.png" alt="bin">
+            <h3>Delete Room</h3>
+        </div>
+        <p>Are you sure you want to delete it?</p>
+
+        <div class="button-center">
+            <button class="btn delete" onclick="DeleteRoom()">Delete</button>
+        </div>
+        <button class="close-btn" id="closeModal">Cancel</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/Scripts/Room.js"></script>
+
+    <script>
+        $("#background1").on("change", function () {
+            var backgroundOne = $(this).val();
+            $('#background1').val(backgroundOne);
+        });
+
+        $("#background2").on("change", function () {
+            var backgroundTwo = $(this).val();
+            $('#background2').val(backgroundTwo);
+        })
+    </script>
+} 

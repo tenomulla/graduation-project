@@ -1,0 +1,190 @@
+@model HotelBookingWebCore.Models.BookingDetailViewModel
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Booking - Hotel Booking Portal</title>
+
+    <!-- <link rel="stylesheet" href="/css/all.css"> -->
+    <link rel="stylesheet" href="~/css/user.css">
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+
+    <style>
+    body{
+        overflow-x: hidden;
+        background-color: #e5e5e5;
+    }
+    .progress-line{
+        width: 70% !important;
+        left: 50% !important;
+    }
+    .circle{
+        z-index: 1000;
+    }
+        .terms {
+            position: absolute;
+            top: 78%;
+            left: 24%;
+            color: #656565;
+            z-index: 100000;
+        }
+
+    .paymentMethodSubmit {
+    display: flex;
+    justify-content: center;
+    padding-top: 59px;
+    position: relative;
+    padding-right: 115px;
+}
+
+.paymentMethodSubmit {
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    position: relative;
+    padding-right: 115px;
+}
+
+
+@@media only screen and (max-width: 500px) {
+    .paymentMethodSubmit {
+    display: flex;
+    justify-content: center;
+    padding-top: 35px;
+    position: relative;
+    padding-right: 0;
+
+}
+}
+    </style>
+</head>
+<body>
+
+    <div class="nav-section">
+        <div class="logo-div">
+            <img class="logo" src="~/images/logo.png" alt="logo">
+            <div class="home-border"></div>
+            <i onclick="location.href = '/Users/Index'"  class="fas fa-home"></i>
+
+        </div>
+
+        <div class="timeline-container">
+
+            <div class="progress-container">
+
+                <div class="progress-line" id="progress"></div>
+
+                <div class="whole-progress">
+                    <div class="circle active">1</div>
+
+                </div>
+
+                <div class="whole-progress">
+                    <div class="circle active">2</div>
+
+                </div>
+
+
+                <div class="whole-progress">
+                    <div class="circle">3</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="topic paying">
+            <h3 class="name" dir="rtl">الدفع <span class="money-img"><img src="~/images/money-img.png" alt="money"></span></h3>
+
+        </div>
+    </div>
+
+    <div dir="rtl" class="payment-steps flex">
+        <div class="timing">
+            <div class="container">
+                <h3 dir="rtl">@Convert.ToDateTime(Model.BookedDate).ToString("dddd dd , MMMM")</h3>
+                <h3 class="border">@Model.Time</h3>
+
+                <div class="room-price">
+                    <h4 dir="rtl">أحجية @Model.Room</h4>
+                    <h5 dir="ltr" class="calculate">( @Model.Size  x  @Model.Amount )</h5>
+                </div>
+                <div class="total">
+                    <p dir="rtl">الإجمالي</p>
+                    <h5 class="total-amount"><del>@Model.Total ريال</del></h5>
+                </div>
+                <div class="discount">
+                    <input type="hidden" value="@Model.Id" id="BookingId" />
+                    <p class="coupon" dir="ltr"><span class="cutted-price">-@Model.DiscountPercent%</span><span class="code">@Model.CouponName</span><i class="fas fa-times" onclick="DeleteCoupon()" style="cursor:pointer;"></i></p>
+                    <h5 class="apply" dir="rtl">تطبيق</h5>
+
+                </div>
+            </div>
+        </div>
+        <div class="payment-method">
+            <div class="container">
+                <h4 dir="rtl">طريقة الدفع</h4>
+                <div class="paymentMethodContainer">
+                    <div class="paymentMethodForm">
+                        <form action="/action_page.php">
+
+                            <div class="paymentMethodOption">
+                                <label class="onlinePayment" for="onlinePayment">
+                                    <input type="radio" id="onlinePayment" name="payment_method" value="online_payment">
+                                    <img src="~/images/pm2.png" alt="online payment">
+                                </label>
+                            </div>
+                            <div id="tooltip" class="paymentMethodOption">
+                                <label class="CodPayment" for="codPayment">
+                                    <input type="radio" id="codPayment" name="payment_method" value="cod_payment">
+                                    <!-- <div dir="rtl" id="tooltip-text">
+                                        * هذه الطريقة غير متاحة لأن الموعد ليس خلال ال24 ساعة القادمة
+                                    </div> -->
+                                    <img src="~/images/PM1.png" alt="Cash On delivery">
+                                </label>
+
+                            </div>
+                            <p class="terms" dir="rtl">بإتمام الحجز أوافق على&nbsp;<a dir="rtl" href="#">الشروط والأحكام</a></p>
+                            <div class="paymentMethodSubmit">
+                                <span></span>
+                                <button onclick="location.href ='/Users/Frame6'" data-aos="fade-right" type="button">✓</button>
+                                <!-- <input type="submit" value="✔"> -->
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!--Jquery CDN link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $("input[type=radio]:checked").parent().addClass("selected");
+
+        $('input[type=radio]').change(function () {
+            $("input[type=radio]").parent().removeClass("selected");
+            $("input[type=radio]:checked").parent().addClass("selected");
+
+        });
+    </script>
+</body>
+</html>
+<script>
+    function DeleteCoupon() {
+        var bookingId = $('#BookingId').val();
+        $.get("/Users/DeleteCoupon?bookingId=" + bookingId, function (res) {
+            window.location.href = '/Users/Frame2?bookingId=' + bookingId;
+        });
+    }
+</script>

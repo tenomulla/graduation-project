@@ -1,0 +1,152 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Coupon List";
+}
+<head>
+    <!-- Jquery Function that loads nav  -->
+    <!-- style -->
+    <style>
+
+        table {
+            border: none;
+        }
+
+        td {
+            font-size: 0.9rem !important;
+        }
+    </style>
+
+</head>
+
+
+
+<div class="description">
+    <h2 class="heading">COUPON LIST</h2>
+    <img class="scroll" src="~/images/scroll.png" alt="scroll">
+    <button onclick="addCouponModal();" class="btn">ADD NEW COUPON</button>
+</div>
+<div class="table-div">
+    <table>
+        <thead>
+            <tr style="height: 3rem;">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Duration</th>
+                <th>% / $</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+        <tbody id="CouponTbody">
+        </tbody>
+    </table>
+</div>
+
+<div id="addcoupon-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="close" class="item3 close"><i class="fas fa-times-circle"></i></span>
+        <div class="flex">
+            <div class="left-side">
+                @*<div class="input-control">
+                        <label for="id">ID</label><br>
+                        <input name="id" type="text" placeholder="Enter Coupon Id" id="id">
+                    </div>*@
+                <div class="input-control">
+                    <label for="duration">Duration</label><br>
+                    <input name="duration" type="text" placeholder="Enter Coupon Duration" id="duration">
+                </div>
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input type="text" placeholder="Enter Coupon Name" id="name">
+                </div>
+
+                <div class="input-control">
+                    <label for="discount">Discount Percentage</label><br>
+                    <input type="text" placeholder="Enter Coupon discount" id="discountPercent">
+                </div>
+
+            </div>
+            <div class="right-side">
+                <div class="input-control">
+                    <label for="status">Change Status</label><br>
+                    <select name="status" id="status">
+                        <option value="Select Status" selected>Select Status</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Unpaid">Unpaid</option>
+                    </select>
+                </div>
+                <div class="input-control mt-10">
+                    <label for="date">Release Date</label>
+                    <input name="date" style="text-transform: uppercase;" type="date" id="releaseDate">
+                </div>
+            </div>
+        </div>
+        <div style="text-align: right; margin-right: 5px; cursor:pointer;" class="check" onclick="AddCouponList()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+
+<div id="editcoupon-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="edit-coupon-close" class="item3 close" onclick="CloseOpenedModal('editcoupon-modal')"><i class="fas fa-times-circle"></i></span>
+        <div class="flex">
+            <div class="left-side">
+                <div class="input-control">
+                    <label for="id">ID</label><br>
+                    <input style="background-color: #DCDCDC;" name="id" type="text" id="id_edit">
+                </div>
+                <div class="input-control">
+                    <label for="status">Status</label><br>
+                    <input style="background-color: #DCDCDC;" name="status" type="text" id="status_edit">
+                </div>
+                <div class="input-control">
+                    <label for="date">Date</label><br>
+                    <input style="background-color: #DCDCDC;" type="text" value="24 / 3 / 2022" id="releaseDate_edit">
+                </div>
+
+            </div>
+            <div class="right-side">
+                <div class="input-control">
+                    <label for="duration">Duration</label><br>
+                    <input name="duration" type="text" placeholder="Enter Coupon Duration" id="couponDuration_edit">
+                </div>
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input type="text" placeholder="Enter Coupon Name" id="name_edit">
+                </div>
+
+                <div class="input-control">
+                    <label for="discount">Discount Percentage</label><br>
+                    <input type="text" placeholder="Enter Coupon discount" id="discountPercent_edit">
+                </div>
+            </div>
+
+
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="UpdateCouponList()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div>
+
+@*Delete Modal*@
+<div id="deleteCouponModal" class="deleteModal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="flex heading text-center">
+            <input type="hidden" id="CouponId_del" />
+            <img class="bin" src="~/images/bin.png" alt="bin">
+            <h3>Delete Coupon</h3>
+        </div>
+        <p>Are you sure you want to delete it?</p>
+
+        <div class="button-center">
+            <button class="btn delete" onclick="DeleteCoupon()">Delete</button>
+        </div>
+        <button class="close-btn" id="closeModal">Cancel</button>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/js/Scripts/Coupon.js"></script>
+}
+

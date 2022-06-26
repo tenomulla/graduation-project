@@ -1,0 +1,181 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Booking List";
+}
+<head>
+    <!-- Jquery Function that loads nav  -->
+    <!-- style -->
+    <style>
+        table {
+            border: none;
+        }
+
+        .description {
+            width: 90% !important;
+        }
+
+        table .fas {
+            margin-left: 20px !important;
+        }
+
+        .pagination .btn7 {
+            margin-left: auto !important;
+        }
+        .fa-ellipsis-h{
+        border-radius: 50% !important;
+        border: 1px solid #E8CB18!important;
+        color: #E8CB18 !important;
+        width: 28px !important;
+        line-height: 1.5 !important;
+        height: 26px !important;
+        font-size: 1rem !important;
+        color: #FFDC00;
+        }
+
+        .fa-ellipsis-h:hover{
+            color: #b3b3b3 !important;
+            border: 1px solid #b3b3b3 !important;
+        }
+    </style>
+</head>
+
+<div class="description">
+    <h2 class="heading">BOOKING LIST</h2>
+    <img class="scroll" src="~/images/scroll.png" alt="scroll">
+    <button onclick="addReservationModal()" class="btn">ADD NEW RESERVATION</button>
+</div>
+<div class="table-div">
+    <table>
+        <thead>
+            <tr style="height: 3rem;">
+                <th>Id</th>
+                <th>Room</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guest name</th>
+                <th>Guest #</th>
+                <th>Size</th>
+                <th>Status</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="BookingTbody">
+        </tbody>
+    </table>
+</div>
+
+<!--modal ends here-->
+<!-- delete modal starts here -->
+<!-- Trigger/Open The Modal -->
+<!-- The Modal -->
+<div  id="deleteListModal" class="deleteModal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="flex heading text-center">
+            <img class="bin" src="~/images/bin.png" alt="bin">
+            <h3>Delete Booking</h3>
+        </div>
+        <p>Are you Sure you want to delete it?</p>
+        <div class="button-center">
+            <button class="btn delete" onclick="DeleteBookingList()">Delete</button>
+            <button class="btn available">Delete & Make It Available</button>
+        </div>
+        <button class="close-btn" id="closeModal">Cancel</button>
+    </div>
+</div>
+
+<div id="BookingListModalShow">
+
+</div>
+
+<!-- add reservation modal -->
+<div id="addreservation-modal" class="addcoupon-modal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span id="closeThis" class="item3 close"><i class="fas fa-times-circle"></i></span>
+
+        <div class="flex inputs">
+            <div class="left-side">
+                <div class="input-control">
+                    <label for="name">Name</label><br>
+                    <input type="text" placeholder="Enter Customer Name" id="name">
+                </div>
+                <div class="input-control">
+                    <label for="Phone Number">Phone Number</label><br>
+                    <input name="Phone Number" type="text" placeholder="Enter Customer Phone Number" id="phone">
+                </div>
+                <div class="input-control">
+                    <label for="Size">Size</label><br>
+                    <input name="Size" type="text" placeholder="Enter Customer Group Size" id="size">
+                </div>
+                <div class="input-control">
+                    <label for="Category">Category</label><br>
+                    <input name="Category" type="text" placeholder="Enter Customer Category" id="category">
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="input-control">
+                    <label for="Status">Change Status</label><br>
+                    <select onchange="status()" name="status" id="status">
+                        <option value="Select Status" disabled selected>Select Status</option>
+                        <option class="blue" value="confirmed" >Confirmed</option>
+                        <option class="red" value="unconfirmed" >UnConfirmed</option>
+                        <option class="green" value="paid">Paid</option>
+                        <option class="grey" value="canceled">Canceled</option>
+                    </select>
+                </div>
+
+                <div class="input-control">
+                    <label for="Room">Change Room</label><br>
+                    <select name="Room" id="Room">
+                        <option value="Select Room" disabled selected>Select Room</option>
+                        <option class="blue" value="Pyramid">Pyramid</option>
+
+                    </select>
+                </div>
+
+                <div class="input-control">
+                    <label for="date">Booking Date</label><br>
+                    <input type="date" id="bookingDate">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="time">
+            <select id='hours'></select>&nbsp;&nbsp;:&nbsp;&nbsp;<select id='minutes'></select>&nbsp;&nbsp;:&nbsp;&nbsp;
+            <select id='AmPm'>
+                <option value="pm">PM</option>
+                <option value="pm">AM</option>
+            </select>
+        </div>
+        <div style="text-align: right; margin-right: 5px;" class="check" onclick="AddBooking()"><i class="fas fa-check-circle"></i></div>
+    </div>
+</div> <!--modal ends here-->
+<script type="text/javascript">
+    // fucntion to change the color of select inputs according to their values
+function status() {
+  var select = document.getElementById("status_show");
+  console.log(select);
+  var value = select.value;
+  if (value == "confirmed") {
+    select.style.backgroundColor = "#78A5DA";
+    select.style.color = "#333333";
+  }
+  else if (value == "unconfirmed"){
+    select.style.backgroundColor = "#F66D6D";
+    select.style.color = "#333333";
+  }
+  else if (value == "paid"){
+    select.style.backgroundColor = "#4EE59D";
+    select.style.color = "#333333";
+  }
+  else if (value == "canceled"){
+    select.style.backgroundColor = "#A8A8A8";
+    select.style.color = "#333333";
+  }
+}
+</script>
+@section Scripts{
+    <script src="~/js/Scripts/Booking.js"></script>
+}

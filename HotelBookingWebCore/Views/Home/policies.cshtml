@@ -1,0 +1,164 @@
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <!-- style -->
+    <style>
+        body {
+            display: flex;
+            background-color: #FAFAFB;
+        }
+        .save{
+
+        padding: 11px 44px !important;
+        }
+    </style>
+</head>
+
+            <div class="description">
+                <h2 class="heading">POLICIES AND WEBSITE INFO</h2>
+            </div>
+
+            <div class="terms-conditions">
+                <div class="terms-container">
+                    <div class="btn-container"><button class="btn">Terms and Conditions / Ar</button><i class="fas fa-pen"></i></div>
+                    <div class="policies-card">
+                        @* <p dir="rtl">حقوق الملكية الفكرية</p> <br>
+                        <p dir="rtl">نملك كافة حقوق الملكية الفكرية لموقعنا، وجميع المواد المنشورة فيه تخضع لحماية
+                            قوانين حقوق الطبع والنشر والمعاهدات العالمية، وجميع هذه الحقوق محفوظة.</p>
+
+                        <p dir="rtl">
+                            يحق لك استخدام كل مالم يذكر غير ذلك صراحة من النصوص ومقاطع الفيديو والصور والمواد التعليمية
+                            المقدمة على موقعنا. وتُستخدم بعض الوثائق المرجعية والكتب الرقمية والمقالات والمعلومات الأخرى
+                            بتصريح من الأطراف الأخرى بخضوعها لقواعد وشروط محددة يتم نشرها مع تلك المعلومات. باستخدامك
+                            لموقعنا، فإنك توافق على التقيد بجميع هذه القواعد والشروط والاحتفاظ بجميع حقوق الطبع والنشر
+                            والإشعارات الأخرى في أي محتوى تحصل عليه من موقعنا. جميع حقوق موقعنا ومحتواه محفوظة، ما لم
+                            يتم منحها بشكل صريح.</p>
+                        <p dir="rtl">
+                            يحق لك طباعة نسخة واحدة وتنزيل أجزاء/اقتباسات من محتوى موقعنا لاستخدامك الشخصي ومشاركة ذلك
+                            المحتوى مع اشخاص آخرون في منشأتك.</p>
+                        <p dir="rtl">
+                            لا يحق لك تعديل النسخ الورقية أو الرقمية لأي مواد قمت بطباعتها أو تنزيلها بأي طريقة، ولا
+                            يجوز أن تستخدم أي رسوم توضحية أو صور فوتوغرافية أو سلسلة من المقاطع المرئية أو الصوتية أو أي
+                            رسومات بيانية أخرى.
+
+                            الإقرار الدائم بمكانتنا (والإعتراف بالمشاركين المخولين) بكونهم مؤلفي لمحتوى موقعنا.</p>
+                        <p dir="rtl">
+                            ليس لك حق استخدام أي جزء من محتوى موقعنا لأغراض تجارية دون الحصول على إذن للقيام بذلك منا أو
+                            من ممثلينا.</p>
+                        <p dir="rtl">في حال القيام بطباعة أو نسخ أو تنزيل أي جزء من موقعنا إخلالًا لشروط الاستخدام فسيتم
+                            إيقاف حقك في استخدام موقعنا فورًا. وستُلزم بإعادة أو إتلاف المواد التي قمت بنسخها.
+
+                            عدم الاعتماد على المعلومات</p>
+                        <p dir="rtl">
+
+                            إن المعلومات المتوفرة على موقعنا هي مجرد معلومات عامة وليست متخصصة. يجب عليك الحصول على
+                            الإستشارة الإحترافية أو المتخصصة قبل الإقدام على إتخاذ أي قرار أو التراجع عنه بناءًا على
+                            محتوى موقعنا.</p>
+                        <p dir="rtl">
+                            وبالرغم من الجهود المبذولة لتحديث معلومات موقعنا، إلا أننا لا نتعهد أو نضمن بشكل صريح أو
+                            ضمني دقة وحداثة وكمال محتوى موقعنا.</p>
+                        <p dir="rtl">
+                            كما لا نتعهد بأن محتوى موقعنا سيلبي احتياجاتك أو توقعاتك ولا نضمن دقة أو كمال أو جودة موقعنا
+                            أو محتواه أو إستمرارية توفر بعضًا من أجزاءه.</p> *@
+@* 
+<textarea class="textarea-arabic"  dir="rtl">حقوق الملكية الفكرية&#10;&#10; نملك كافة حقوق الملكية الفكرية لموقعنا، وجميع المواد المنشورة فيه تخضع لحماية قوانين حقوق الطبع والنشر والمعاهدات العالمية، وجميع هذه الحقوق محفوظة.&#10;&#10; يحق لك استخدام كل مالم يذكر غير ذلك صراحة من النصوص ومقاطع الفيديو والصور والمواد التعليمية
+المقدمة على موقعنا. وتُستخدم بعض الوثائق المرجعية والكتب الرقمية والمقالات والمعلومات الأخرى
+بتصريح من الأطراف الأخرى بخضوعها لقواعد وشروط محددة يتم نشرها مع تلك المعلومات. باستخدامك
+لموقعنا، فإنك توافق على التقيد بجميع هذه القواعد والشروط والاحتفاظ بجميع حقوق الطبع والنشر
+والإشعارات الأخرى في أي محتوى تحصل عليه من موقعنا. جميع حقوق موقعنا ومحتواه محفوظة، ما لم
+</textarea> *@
+
+
+                <div class="textarea-arabic" contenteditable="true">
+                <p dir="rtl">حقوق الملكية الفكرية</p> <br>
+                <p dir="rtl">نملك كافة حقوق الملكية الفكرية لموقعنا، وجميع المواد المنشورة فيه تخضع لحماية
+                قوانين حقوق الطبع والنشر والمعاهدات العالمية، وجميع هذه الحقوق محفوظة.</p>
+
+                <p dir="rtl">
+                يحق لك استخدام كل مالم يذكر غير ذلك صراحة من النصوص ومقاطع الفيديو والصور والمواد التعليمية
+                المقدمة على موقعنا. وتُستخدم بعض الوثائق المرجعية والكتب الرقمية والمقالات والمعلومات الأخرى
+                بتصريح من الأطراف الأخرى بخضوعها لقواعد وشروط محددة يتم نشرها مع تلك المعلومات. باستخدامك
+                لموقعنا، فإنك توافق على التقيد بجميع هذه القواعد والشروط والاحتفاظ بجميع حقوق الطبع والنشر
+                والإشعارات الأخرى في أي محتوى تحصل عليه من موقعنا. جميع حقوق موقعنا ومحتواه محفوظة، ما لم
+                يتم منحها بشكل صريح.</p>
+                <p dir="rtl">
+                يحق لك طباعة نسخة واحدة وتنزيل أجزاء/اقتباسات من محتوى موقعنا لاستخدامك الشخصي ومشاركة ذلك
+                المحتوى مع اشخاص آخرون في منشأتك.</p>
+                <p dir="rtl">
+                لا يحق لك تعديل النسخ الورقية أو الرقمية لأي مواد قمت بطباعتها أو تنزيلها بأي طريقة، ولا
+                يجوز أن تستخدم أي رسوم توضحية أو صور فوتوغرافية أو سلسلة من المقاطع المرئية أو الصوتية أو أي
+                رسومات بيانية أخرى.
+
+                الإقرار الدائم بمكانتنا (والإعتراف بالمشاركين المخولين) بكونهم مؤلفي لمحتوى موقعنا.</p>
+                <p dir="rtl">
+                ليس لك حق استخدام أي جزء من محتوى موقعنا لأغراض تجارية دون الحصول على إذن للقيام بذلك منا أو
+                من ممثلينا.</p>
+                <p dir="rtl">في حال القيام بطباعة أو نسخ أو تنزيل أي جزء من موقعنا إخلالًا لشروط الاستخدام فسيتم
+                إيقاف حقك في استخدام موقعنا فورًا. وستُلزم بإعادة أو إتلاف المواد التي قمت بنسخها.
+
+                عدم الاعتماد على المعلومات</p>
+                <p dir="rtl">
+
+                إن المعلومات المتوفرة على موقعنا هي مجرد معلومات عامة وليست متخصصة. يجب عليك الحصول على
+                الإستشارة الإحترافية أو المتخصصة قبل الإقدام على إتخاذ أي قرار أو التراجع عنه بناءًا على
+                محتوى موقعنا.</p>
+                <p dir="rtl">
+                وبالرغم من الجهود المبذولة لتحديث معلومات موقعنا، إلا أننا لا نتعهد أو نضمن بشكل صريح أو
+                ضمني دقة وحداثة وكمال محتوى موقعنا.</p>
+                <p dir="rtl">
+                كما لا نتعهد بأن محتوى موقعنا سيلبي احتياجاتك أو توقعاتك ولا نضمن دقة أو كمال أو جودة موقعنا
+                أو محتواه أو إستمرارية توفر بعضًا من أجزاءه.</p>
+                </div>
+
+                    </div>
+
+                    
+                </div>
+
+                <div class="terms-container">
+                    <div class="btn-container"><button class="btn">Terms and Conditions / EN </button><i
+                        class="fas fa-pen"></i></div>
+                    <div class="policies-card card2">
+                        @* <p>A Terms and Conditions agreement acts as legal contracts between you (the company) who has
+                            the website or mobile app, and the user who accesses your website/app.</p>
+                        <p>Having a Terms and Conditions agreement is completely optional. No laws require you to have
+                            one. Not even the super-strict and wide-reaching General Data Protection Regulation (GDPR).
+                        </p>
+
+                        <p>
+                            Your Terms and Conditions agreement will be uniquely yours. While some clauses are standard
+                            and commonly seen in pretty much every Terms and Conditions agreement, it's up to you to set
+                            the rules and guidelines that the user must agree to.</p>
+                        <p>You can think of your Terms and Conditions agreement as the legal agreement where you
+                            maintain your rights to exclude users from your app in the event that they abuse your app,
+                            where you maintain your legal rights against potential app abusers, and so on.</p>
+                        <p>Terms and Conditions agreements are also known as Terms of Service or Terms of Use
+                            agreements. These terms are interchangeable, practically speaking.</p> *@
+
+                        <div contenteditable="true" class="textarea-english">
+                        <p>A Terms and Conditions agreement acts as legal contracts between you (the company) who has
+                        the website or mobile app, and the user who accesses your website/app.</p>
+                        <p>Having a Terms and Conditions agreement is completely optional. No laws require you to have
+                        one. Not even the super-strict and wide-reaching General Data Protection Regulation (GDPR).
+                        </p>
+
+                        <p>
+                        Your Terms and Conditions agreement will be uniquely yours. While some clauses are standard
+                        and commonly seen in pretty much every Terms and Conditions agreement, it's up to you to set
+                        the rules and guidelines that the user must agree to.</p>
+                        <p>You can think of your Terms and Conditions agreement as the legal agreement where you
+                        maintain your rights to exclude users from your app in the event that they abuse your app,
+                        where you maintain your legal rights against potential app abusers, and so on.</p>
+                        <p>Terms and Conditions agreements are also known as Terms of Service or Terms of Use
+                        agreements. These terms are interchangeable, practically speaking.</p>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            </div>
+            <div class="button-center">
+                <button class="btn save">SAVE</button>
+            </div>

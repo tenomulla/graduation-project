@@ -1,0 +1,117 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    if (HotelBookingWebCore.Models.UserSession.USession != null)
+    {
+        ViewBag.UserName = HotelBookingWebCore.Models.UserSession.USession.FullName;
+    }
+    else
+    {
+       <script>
+           window.location.href = "/Users/SignIn";
+       </script>
+    }
+}
+
+<style>
+    .fa-ellipsis-h{
+        border-radius: 50% !important;
+        border: 1px solid #E8CB18!important;
+        color: #E8CB18 !important;
+        width: 28px !important;
+        line-height: 1.5 !important;
+        height: 26px !important;
+        font-size: 1rem !important;
+        color: #FFDC00;
+        }
+
+        .fa-ellipsis-h:hover{
+            color: #b3b3b3 !important;
+            border: 1px solid #b3b3b3 !important;
+        }
+</style>
+
+<div class="welcome">
+    <img class="logo" src="~/images/logo.png" alt="logo">
+    <h1>Welcome @ViewBag.UserName</h1>
+</div>
+<div class="description">
+    <h2 class="heading">Today's Booking</h2>
+    <img class="scroll" src="~/images/scroll.png" alt="scroll">
+</div>
+<div class="table-div">
+    <table>
+        <thead>
+            <tr style="height: 3rem;">
+                <th>Id</th>
+                <th>Room</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guest name</th>
+                <th>Customer #</th>
+                <th>Size</th>
+                <th>Status</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="TbodyTodaysBooking">
+        </tbody>
+    </table>
+
+</div>
+
+<!-- 2nd Container -->
+@*<div style="margin-top: 1rem;" class="container">*@
+
+    <div class="description">
+        <h2 class="heading">Tommorow's Booking</h2>
+        <img class="scroll" src="~/images/scroll.png" alt="scroll">
+    </div>
+    <div class="table-div">
+        <table>
+            <thead>
+                <tr style="height: 3rem;">
+                    <th>Id</th>
+                    <th>Room</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Guest name</th>
+                    <th>Customer #</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="TomorrowsBookingTbody">
+            </tbody>
+        </table>
+    </div>
+
+
+<div id="show_ModalBooking">
+</div>
+ <!--modal ends here-->
+<!-- delete modal starts here -->
+<!-- Trigger/Open The Modal -->
+<!-- The Modal -->
+<div id="deleteModal" class="deleteModal modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="flex heading text-center">
+            <img class="bin" src="~/images/bin.png" alt="bin">
+            <h3>Delete Booking</h3>
+        </div>
+        <p>Are you Sure you want to delete it?</p>
+
+
+        <div class="button-center">
+            <button class="btn delete" onclick="DeleteBookingList()">Delete</button>
+            <button class="btn available" onclick="DeleteBookingAndMakeitAvailable()">Delete & Make It Available</button>
+        </div>
+        <button class="close-btn" id="close" onclick="CloseOpenedModal('deleteModal')">Cancel</button>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script src="~/js/Scripts/Home.js"></script>
+}

@@ -1,0 +1,170 @@
+@{ 
+    Layout = null;
+    if(HotelBookingWebCore.Models.UserSession.USession != null)
+    {
+        <script> window.location.href = "/Home/Index"; </script>
+    }
+}
+<html>
+<head>
+    <title>Sign In - Admin Panel</title>
+    <!-- Font Awesome Icon -->
+    <script src="https://kit.fontawesome.com/d8eeab8155.js" crossorigin="anonymous"></script>
+
+    <!-- css-->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/toastr.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: grid;
+            background-color: #FFDC00;
+            place-content: center;
+            font-family: 'Montserrat', sans-serif;
+            padding: 0 1rem;
+            overflow: hidden;
+        }
+
+        .bg {
+            position: absolute;
+            top: -38%;
+            left: 0;
+            background-color: #000;
+            z-index: -1;
+        }
+
+        button {
+            display: inline-block;
+            border: none;
+            background-color: var(--main-color);
+            color: #000000;
+            padding: 7px 20px;
+            border-radius: 7px;
+            font-family: var(--primary-font);
+        }
+
+            button:hover {
+                cursor: pointer;
+                background-color: #000;
+                color: var(--main-color);
+            }
+
+        .logo {
+            max-width: 22vw;
+            max-height: 12vh;
+        }
+
+        .card {
+            width: 100%;
+            min-width: 39vw;
+            height: max-content;
+            background: #FFFFFF;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        .card-container {
+            width: 100%;
+            height: 100%;
+            padding: 3rem;
+        }
+
+        .form {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        label {
+            margin-right: 8.2rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        input {
+            width: 17rem;
+            max-width: 19rem;
+            font-size: 1rem;
+            padding: 1rem;
+            height: 3.2rem;
+            outline: none;
+            border: none;
+            border-radius: 7px;
+            background-color: #F8F8F8;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        img, h2, h4, input, h4 {
+            margin: 9px 0;
+        }
+
+        h4 {
+            color: #6C6C6C;
+            font-weight: 400;
+        }
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #bfbfbfe8;
+            opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #bfbfbfe8;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color: #bfbfbfe8;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="card">
+        <div class="card-container">
+            <div class="form">
+                <div class="image">
+                    <img src="~/images/logo.png" alt="logo" class="logo">
+                </div>
+                <h2>SIGN IN</h2>
+                <h4>Enter Your Credentials to access your account</h4>
+                <label for="username">Username</label><br>
+                <input type="text" id="UserName" placeholder="Enter your UserName"><br>
+                <label for="password">Password</label> <br>
+                <input type="password" id="Pass" placeholder="Enter Your Password"> <br>
+                <button type="submit" class="btn" id="btn_login" onclick="Login()">SIGN IN</button>
+                @* <h4>Forget Your Password? <a href="#">Reset Password</a></h4> *@
+            </div>
+        </div>
+    </div>
+    <img class="bg" src="~/images/background.png" alt="background">
+
+    <script src="~/js/jquery-3.4.1.min.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>*@
+</body>
+</html>
+    <script>
+        // Login function
+        function Login() {
+            var data = {
+                userName: $('#UserName').val(),
+                pass: $('#Pass').val()
+            };
+            $.post("/Users/Getlogin", data, function (res) {
+                if (res == "Success") {
+                    window.location = '/Home/Index';
+                }
+                else {
+                    toastr.error("User Name or Password Invalid", "Warning");
+                }
+            });
+        }
+    </script>

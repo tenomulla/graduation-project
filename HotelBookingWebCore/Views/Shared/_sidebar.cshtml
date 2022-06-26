@@ -1,0 +1,42 @@
+﻿@{ 
+    if(HotelBookingWebCore.Models.UserSession.USession != null)
+    {
+        ViewBag.Role = HotelBookingWebCore.Models.UserSession.USession.UserType;
+    }
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.2/font/bootstrap-icons.min.css" integrity="sha512-YzwGgFdO1NQw1CZkPoGyRkEnUTxPSbGWXvGiXrWk8IeSqdyci0dEDYdLLjMxq1zCoU0QBa4kHAFiRhUL3z2bow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<nav>
+    <ul>
+        <img class="nav-logo" src="~/images/logo.png" alt="">
+        @if (ViewBag.Role == "Manager")
+        {
+            <li onclick="location.href='/Home/Index'"><i class="far fa-home-alt fa-fw"></i><span class="pages-name">Home</span></li>
+            <li onclick="location.href='/Room/RoomList'"><i class="far fa-hotel fa-fw"></i><span class="pages-name">Room</span></li>
+            <li onclick="location.href='/coupon/CouponList'"><i class="far fa-ticket fa-fw"></i><span class="pages-name">Coupon</span></li>
+            <li onclick="location.href='/Admin/AdminList'"><i class="far fa-user fa-fw"></i><span class="pages-name">Admin</span></li>
+            <li onclick="location.href='/Appoinment/AppoinmentList'"><i class="far fa-calendar-alt fa-fw"></i><span class="pages-name">Appointment</span></li>
+            <li onclick="location.href='/Booking/BookingList'"><i class="far fa-list-alt fa-fw"></i><span class="pages-name">Booking</span></li>
+            <li onclick="location.href='/Customer/CustomerList'"><i class="far fa-users fa-fw"></i><span class="pages-name">Customer</span></li>
+            <li onclick="location.href='/Home/Policies'"><i class="far fa-shield-check fa-fw"></i><span class="pages-name">Policy</span></li>
+            <li onclick="location.href='/Users/SignOut'"><i class="far fa-share fa-fw"></i><span class="pages-name">Sign Out</span></li>
+        }
+        else if (ViewBag.Role == "Game Master")
+        {
+            <li onclick="location.href='/Home/Index'"><i class="fas fa-home fa-fw"></i><span class="pages-name">Home</span></li>
+            <li onclick="location.href='/Booking/BookingList'"><i class="fas fa-list-alt fa-fw"></i><span class="pages-name">Booking</span></li>
+            <li onclick="location.href='/Customer/CustomerList'"><i class="fas fa-users fa-fw"></i><span class="pages-name">Customer</span></li>
+            <li onclick="location.href='/Users/SignOut'"><i class="fas fa-share fa-fw"></i><span class="pages-name">Sign Out</span></li>
+        }
+        else
+        {
+            <li onclick="location.href='/Home/Index'"><i class="fas fa-home fa-fw"></i><span class="pages-name">Home</span></li>
+            <li onclick="location.href='/Room/RoomList'"><i class="fas fa-hotel fa-fw"></i><span class="pages-name">Room</span></li>
+            <li onclick="location.href='/coupon/CouponList'"><i class="fas fa-ticket-alt fa-fw"></i><span class="pages-name">Coupon</span></li>
+            <li onclick="location.href='/Appoinment/AppoinmentList'"><i class="fas fa-calendar-alt fa-fw"></i><span class="pages-name">Appointment</span></li>
+            <li onclick="location.href='/Booking/BookingList'"><i class="fas fa-list-alt fa-fw"></i><span class="pages-name">Booking</span></li>
+            <li onclick="location.href='/Customer/CustomerList'"><i class="fas fa-users fa-fw"></i><span class="pages-name">Customer</span></li>
+            <li onclick="location.href='/Users/SignOut'"><i class="fas fa-share fa-fw"></i><span class="pages-name">Sign Out</span></li>
+        }
+    </ul>
+</nav>

@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "Customers";
+}
+<head>
+
+    <!-- style -->
+    <style>
+        table {
+            border: none;
+        }
+
+        .description {
+            width: 90% !important;
+        }
+
+        .search {
+            margin-right: 5px;
+            padding-left: 10px;
+            width: 16rem;
+            height: 2rem;
+        }
+
+        .search-container {
+            margin-top: 5rem;
+            margin-left: 1rem;
+        }
+
+        .scroll {
+            margin-left: 5px !important;
+        }
+
+        td:nth-child(1) {
+            color: #8992A9 !important;
+        }
+
+        .table-div {
+            margin: 0 5px !important;
+            flex-basis: 160% !important;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .btn-container {
+            margin-top: 5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<div class="description">
+    <h2 class="heading">CUSTOMERS</h2>
+</div>
+<!-- flex-container -->
+<div class="flex-container">
+    <div class="table-div">
+        <table>
+            <thead>
+                <tr style="height: 3rem;">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody id="CustomersTbody">
+            </tbody>
+        </table>
+    </div>
+    <!-- table-div end -->
+    <div class="description search-div">
+
+        <div class="search-container">
+            <img class="scroll" src="~/images/scroll.png" alt="scroll">
+            <input class="search" type="text" placeholder="&nbsp; Search" style="font-family: 'FontAwesome', 'Arial';" />
+
+            <div class="btn-container">
+                <button class="btn block mt-10 margin-auto" onclick="CopyEmails()">COPY ALL EMAILS</button>
+                <button class="btn block mt-10 margin-auto" onclick="CopyPhoneNumber()">COPY ALL NUMBERS</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- flex-container ends -->
+@section Scripts{
+    <script src="~/js/Scripts/Customer.js"></script>
+}
